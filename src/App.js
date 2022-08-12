@@ -1,9 +1,10 @@
 import './App.css';
+import PokerDeck from './components/PokerDeck/PokerDeck';
 
 function App() {
   return (
     <div className="App">
-      <p>Hello World</p>
+      <PokerDeck />
     </div>
   );
 }
