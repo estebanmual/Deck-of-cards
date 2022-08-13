@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Board.module.css";
 import PokerDeck from "../PokerDeck/PokerDeck";
+import EndGame from "../EndGame/EndGame";
 import hearts from "../../assets/hearts.png";
 import spades from "../../assets/spades.png";
 import diamonds from "../../assets/diamonds.png";
@@ -87,6 +88,7 @@ export default function Board() {
 
   return (
     <div className={style.board}>
+      <EndGame />
       <div className={style.piles}>
         {piles.map((pile, index) => (
           <div className={style.pile} id={`${pile.suit}__pile`} key={index}>
