@@ -49,6 +49,8 @@ const piles = [
 export default function Board() {
   const [deckID, setDeckID] = useState(null);
   const [card, setCard] = useState(null);
+  const [cardCounter, setCardCounter] = useState(0);
+  const selectedCard = "QUEEN";
   
 
   useEffect(() => {
@@ -78,6 +80,9 @@ export default function Board() {
     const cardValue = values.get(card.value);
     const insertionIndex = insertionSort([...pileValues, cardValue]);
     pile.splice(insertionIndex - 1, 0, card);
+    if (card.value === selectedCard) {
+      setCardCounter(cardCounter + 1);
+    }
   };
 
   return (
@@ -93,7 +98,7 @@ export default function Board() {
               <div className={style.cards}>
               {pile.cards.map((card, index) => (
 
-                card.value === "QUEEN" ?
+                card.value === selectedCard ?
                     <img className={`${style.pile__card} ${style.selectedCard}`} src={card.image} alt="Card" key={index} /> : <img className={style.pile__card} src={card.image} alt="Card" key={index} />
                 ))}
               </div>
