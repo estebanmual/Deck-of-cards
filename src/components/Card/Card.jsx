@@ -30,8 +30,8 @@ function Card({ card, moveCard }) {
 
   return (
     <>
-      <button onClick={(e) => flipCard(e)}>FLIP</button>
-      <button className={style.hide} onClick={(e) => dealCard(e)}>
+      <button className={style.card__button} onClick={(e) => flipCard(e)}>FLIP</button>
+      <button className={`${style.hide} ${style.card__button}`} onClick={(e) => dealCard(e)}>
         DEAL
       </button>
       <div className={style.card}>
@@ -40,7 +40,7 @@ function Card({ card, moveCard }) {
             <img src={cardBack} alt="card back" />
           </div>
           <div className={`${style.card__back} ${style.card__face}`}>
-            {card !== null ? <img src={card.image} alt="Card Front" /> : null}
+            {card ? <img src={card.image} alt="Card Front" /> : null}
           </div>
         </div>
       </div>
