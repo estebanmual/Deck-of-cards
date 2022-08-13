@@ -25,41 +25,52 @@ const values = new Map([
 ]);
 
 const insertionSort = (arr) => {
-        let insertNumber = arr.length - 1;
-        let compareNumber = insertNumber - 1;
-        let temp = arr[insertNumber];
-        let counter = 0;
+  let insertNumber = arr.length - 1;
+  let compareNumber = insertNumber - 1;
+  let temp = arr[insertNumber];
+  let counter = 0;
 
-        while (compareNumber >= 0 && arr[compareNumber] > arr[compareNumber + 1]) {
-            arr[compareNumber] = arr[compareNumber + 1];
-            arr[compareNumber + 1] = temp;
-            compareNumber -= 1;
-            counter += 1;
-        }
+  while (compareNumber >= 0 && arr[compareNumber] > arr[compareNumber + 1]) {
+    arr[compareNumber] = arr[compareNumber + 1];
+    arr[compareNumber + 1] = temp;
+    compareNumber -= 1;
+    counter += 1;
+  }
 
-        return arr.length - counter;
-}
+  return arr.length - counter;
+};
 
-const piles = [
-    { suit: "HEARTS", cards: [], suitIMG: hearts },
-    { suit: "SPADES", cards: [], suitIMG: spades },
-    { suit: "DIAMONDS", cards: [], suitIMG: diamonds },
-    { suit: "CLUBS", cards: [], suitIMG: clubs },
-  ];
+export const piles = [
+  { suit: "HEARTS", cards: [], suitIMG: hearts },
+  { suit: "SPADES", cards: [], suitIMG: spades },
+  { suit: "DIAMONDS", cards: [], suitIMG: diamonds },
+  { suit: "CLUBS", cards: [], suitIMG: clubs },
+];
 
 export default function Board() {
   const [deckID, setDeckID] = useState(null);
   const [card, setCard] = useState(null);
+  const [cardCounter, setCardCounter] = useState(0);
   const [cardSelectedCounter, setCardSelectedCounter] = useState(0);
   const selectedCard = "QUEEN";
-  
 
-  useEffect(() => {
+  const newGame = () => {
     fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
       .then((res) => res.json())
       .then((data) => {
         setDeckID(data.deck_id);
       });
+
+    piles.forEach((pile) => {
+      pile.cards = [];
+    });
+
+    setCardCounter(0);
+    setCardSelectedCounter(0);
+  };
+
+  useEffect(() => {
+    newGame();
   }, []);
 
   const newCard = () => {
@@ -81,6 +92,7 @@ export default function Board() {
     const cardValue = values.get(card.value);
     const insertionIndex = insertionSort([...pileValues, cardValue]);
     pile.splice(insertionIndex - 1, 0, card);
+    setCardCounter(cardCounter + 1);
     if (card.value === selectedCard) {
       setCardSelectedCounter(cardSelectedCounter + 1);
     }
@@ -88,21 +100,39 @@ export default function Board() {
 
   return (
     <div className={style.board}>
-      <EndGame />
+      {cardSelectedCounter === 4 ? (
+        <EndGame cardCounter={cardCounter} newGame={() => newGame()} />
+      ) : null}
       <div className={style.piles}>
         {piles.map((pile, index) => (
           <div className={style.pile} id={`${pile.suit}__pile`} key={index}>
             <img src={pile.suitIMG} alt="" />
             <div className={style.pile__cards}>
               <div className={style.pile__box} id={`${pile.suit}__box`}>
-                <img className={style.pile__box_fairPlay} src={fairPlay} alt="FairPLay" />
+                <img
+                  className={style.pile__box_fairPlay}
+                  src={fairPlay}
+                  alt="FairPLay"
+                />
               </div>
               <div className={style.cards}>
-              {pile.cards.map((card, index) => (
-
-                card.value === selectedCard ?
-                    <img className={`${style.pile__card} ${style.selectedCard}`} src={card.image} alt="Card" key={index} /> : <img className={style.pile__card} src={card.image} alt="Card" key={index} />
-                ))}
+                {pile.cards.map((card, index) =>
+                  card.value === selectedCard ? (
+                    <img
+                      className={`${style.pile__card} ${style.selectedCard}`}
+                      src={card.image}
+                      alt="Card"
+                      key={index}
+                    />
+                  ) : (
+                    <img
+                      className={style.pile__card}
+                      src={card.image}
+                      alt="Card"
+                      key={index}
+                    />
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -112,6 +142,7 @@ export default function Board() {
         card={card}
         newCard={() => newCard()}
         saveCard={() => saveCard()}
+        cardCounter={cardCounter}
       />
     </div>
   );
