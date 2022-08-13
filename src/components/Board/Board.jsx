@@ -5,6 +5,7 @@ import hearts from "../../assets/hearts.png";
 import spades from "../../assets/spades.png";
 import diamonds from "../../assets/diamonds.png";
 import clubs from "../../assets/clubs.png";
+import fairPlay from "../../assets/fairPlay.png";
 
 const values = new Map([
   ["2", 2],
@@ -76,9 +77,7 @@ export default function Board() {
     const pileValues = pile.map((card) => values.get(card.value));
     const cardValue = values.get(card.value);
     const insertionIndex = insertionSort([...pileValues, cardValue]);
-    console.log(insertionIndex)
     pile.splice(insertionIndex - 1, 0, card);
-    console.log(piles);
   };
 
   return (
@@ -89,7 +88,7 @@ export default function Board() {
             <img src={pile.suitIMG} alt="" />
             <div className={style.pile__cards}>
               <div className={style.pile__box} id={`${pile.suit}__box`}>
-                Fairplay
+                <img className={style.pile__box_fairPlay} src={fairPlay} alt="FairPLay" />
               </div>
               <div className={style.cards}>
               {pile.cards.map((card, index) => (

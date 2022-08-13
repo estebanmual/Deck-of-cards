@@ -38,13 +38,13 @@ img.pile__card {
     width: 120px;
     height: 170px;
     z-index: 1;
-
     position: relative;
     left: 0;
 }
 
 .pile__card:not(:first-child) {
     margin-left: -100px;
+    transition: all 0.5s;
 }
 
 img.pile__card:first-child:hover ~ .pile__card:not(:first-child) {
@@ -61,4 +61,11 @@ img.pile__card:first-child:hover ~ .pile__card:not(:first-child) {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+img.pile__box_fairPlay  {
+    width: 100%;
+    height: auto;
+    filter: brightness(0);
+    opacity: 0.7;
 }
