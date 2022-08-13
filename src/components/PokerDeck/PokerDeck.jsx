@@ -4,7 +4,7 @@ import style from "./PokerDeck.module.css";
 import backCard from "../../assets/backCard.jpg";
 
 function PokerDeck(props) {
-  const { card, newCard, saveCard } = props;
+  const { card, newCard, saveCard, cardCounter } = props;
   const moveCard = () => {
     const moveCard = document.getElementById("moveCard");
     const moveCardPos = document
@@ -26,9 +26,11 @@ function PokerDeck(props) {
     moveCard.style.opacity = "0";
     moveCard.style.zIndex = "2";
     moveCard.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    saveCard(card);
     setTimeout(() => {
-      newCard();
+      saveCard(card);
+      if (cardCounter !== 52) {
+        newCard();
+      }
       moveCard.style.display = "none";
       clearCard(moveCard);
     } , 1000);
@@ -45,7 +47,7 @@ function PokerDeck(props) {
   return (
     <>
       <div className={style.deck}>
-        <Card card={card} moveCard={() => moveCard()} />
+        <Card card={card} moveCard={() => moveCard()}/>
       </div>
       {card ? (
         <img
