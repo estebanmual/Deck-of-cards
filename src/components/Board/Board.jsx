@@ -91,9 +91,11 @@ export default function Board() {
               <div className={style.pile__box} id={`${pile.suit}__box`}>
                 Fairplay
               </div>
-                {pile.cards.map((card, index) => (
-                    <img src={card.image} alt="" key={index} />
+              <div className={style.cards}>
+              {pile.cards.map((card, index) => (
+                    <img className={style.pile__card} src={card.image} alt="Card" key={index} />
                 ))}
+              </div>
             </div>
           </div>
         ))}
