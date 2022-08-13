@@ -92,7 +92,9 @@ export default function Board() {
               </div>
               <div className={style.cards}>
               {pile.cards.map((card, index) => (
-                    <img className={style.pile__card} src={card.image} alt="Card" key={index} />
+
+                card.value === "QUEEN" ?
+                    <img className={`${style.pile__card} ${style.selectedCard}`} src={card.image} alt="Card" key={index} /> : <img className={style.pile__card} src={card.image} alt="Card" key={index} />
                 ))}
               </div>
             </div>

@@ -69,3 +69,8 @@ img.pile__box_fairPlay  {
     filter: brightness(0);
     opacity: 0.7;
 }
+
+.selectedCard {
+    position: relative;
+    top: -20px;
+}
