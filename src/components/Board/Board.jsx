@@ -49,7 +49,7 @@ const piles = [
 export default function Board() {
   const [deckID, setDeckID] = useState(null);
   const [card, setCard] = useState(null);
-  const [cardCounter, setCardCounter] = useState(0);
+  const [cardSelectedCounter, setCardSelectedCounter] = useState(0);
   const selectedCard = "QUEEN";
   
 
@@ -81,7 +81,7 @@ export default function Board() {
     const insertionIndex = insertionSort([...pileValues, cardValue]);
     pile.splice(insertionIndex - 1, 0, card);
     if (card.value === selectedCard) {
-      setCardCounter(cardCounter + 1);
+      setCardSelectedCounter(cardSelectedCounter + 1);
     }
   };
 
