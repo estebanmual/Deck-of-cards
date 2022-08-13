@@ -1,6 +1,11 @@
 .board {
     position: relative;
     background-color:#0A401E;
+    background-image: url("../../assets/boardBackground050.svg");
+    background-repeat: no-repeat;
+    background-size: 20vw;
+    background-position: center;
+    background-blend-mode: color-burn;
 }
 
 .piles {
