@@ -138,6 +138,11 @@ export default function Board() {
           </div>
         ))}
       </div>
+      <div className={style.boardScore}>
+        <div className={style.boardScore__moves}>
+          <p>Moves: {cardCounter}</p>
+        </ div>
+      </div>
       <PokerDeck
         card={card}
         newCard={() => newCard()}

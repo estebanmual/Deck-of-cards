@@ -8,7 +8,6 @@ function EndGame({ cardCounter, newGame}) {
       <div className={style.endGame__content}>
         <div className={style.endGame__info}>
             <h1>DECK OF CARDS</h1>
-            <h2>END GAME</h2>
             <p>You found all of the QUEENS in only {cardCounter} moves!</p>
         </div>
         <div>

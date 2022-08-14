@@ -87,3 +87,12 @@ img.pile__box_fairPlay  {
     position: relative;
     top: -20px;
 }
+
+.boardScore {
+    position: absolute;
+    top: 100px;
+    right: 50px;
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    font-weight: bold;
+}

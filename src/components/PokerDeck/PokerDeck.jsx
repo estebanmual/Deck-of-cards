@@ -47,8 +47,9 @@ function PokerDeck(props) {
   return (
     <>
       <div className={style.deck}>
-        <Card card={card} moveCard={() => moveCard()}/>
+       {52 - cardCounter === 0 ? null: <Card card={card} moveCard={() => moveCard()}/>}
       </div>
+      
       {card ? (
         <img
           id="moveCard"
