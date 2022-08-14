@@ -1,0 +1,20 @@
+.deck {
+    position: absolute;
+    bottom: 80px;
+    right: 50px;
+    width: 200px;
+    height: 300px;
+}
+
+.cardFlipped {
+    display: none;
+    position: absolute;
+    transition: all 0.5s;
+    bottom: 30px;
+    right: 50px;
+    width: 200px;
+    height: 300px;
+    opacity: 1;
+    z-index: -1;
+}
+
