@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/deck-of-cards/static/css/main.455b1859.css",
+    "main.js": "/deck-of-cards/static/js/main.fcd18968.js",
+    "static/media/backCard.jpg": "/deck-of-cards/static/media/backCard.1f5473f696243b40d515.jpg",
+    "static/media/fairPlay.png": "/deck-of-cards/static/media/fairPlay.08af3b83c4f1ead92d35.png",
+    "static/media/boardBackground050.svg": "/deck-of-cards/static/media/boardBackground050.a63aa4a1a3ee6f16ca7b.svg",
+    "static/media/hearts.png": "/deck-of-cards/static/media/hearts.229bf906e0f042b7fbf0.png",
+    "static/media/diamonds.png": "/deck-of-cards/static/media/diamonds.c6d0315cd7f3506f27f4.png",
+    "index.html": "/deck-of-cards/index.html",
+    "main.455b1859.css.map": "/deck-of-cards/static/css/main.455b1859.css.map",
+    "main.fcd18968.js.map": "/deck-of-cards/static/js/main.fcd18968.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.455b1859.css",
+    "static/js/main.fcd18968.js"
+  ]
+}
